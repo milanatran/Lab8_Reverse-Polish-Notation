@@ -1,4 +1,4 @@
-package ReversePolishNotation;
+package Lab8;
 
 public class StackAsList {
 
