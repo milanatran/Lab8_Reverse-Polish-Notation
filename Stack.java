@@ -12,4 +12,6 @@ public interface Stack<T> {
 	abstract boolean isEmpty();
 	
 	abstract T peek();
+	
+	abstract String toString();
 }
