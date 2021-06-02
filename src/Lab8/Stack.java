@@ -4,9 +4,9 @@ public interface Stack<T> {
 	
 	abstract void push(T element);
 	
-	default T pull() {
-		return (T) "T";
-	}
+	abstract T pop();
+	
+	abstract T peek();
 	
 	abstract boolean isEmpty();
 	
