@@ -1,5 +1,10 @@
 package Lab8;
 
+/*
+ * @author Milana Tran and Ruth Wenzel
+ * @version 2021-06-04
+ */
+
 public class TestStack {
 
 	public static void main(String[] args) {

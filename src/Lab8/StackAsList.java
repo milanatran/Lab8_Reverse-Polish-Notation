@@ -1,5 +1,10 @@
 package Lab8;
 
+/*
+ * @author Milana Tran
+ * @version
+ */
+
 public class StackAsList<T> implements Stack<T> {
 	private T topElem; //new element on the top of the stack
 	private T secondElem; //element behind top element

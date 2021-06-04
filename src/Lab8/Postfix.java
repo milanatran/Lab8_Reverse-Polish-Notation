@@ -3,11 +3,18 @@ package Lab8;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+/*
+ * Class Postfix that takes postfix as a String and returns the evaluation.
+ * https://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/
+ * 
+ * @author Ruth Wenzel
+ * @version 2021-06-04
+ */
+
 public class Postfix {
 	private StackAsList<String> stack = new StackAsList<>();
 	
 	public static void main(String[] args) {
-//	String[] tokens = new String[] { "2", "1", "+", "3", "*" };
 	Postfix p = new Postfix();
 	String s = "21+3*";
 	System.out.println(p.evaluate(s));
@@ -18,8 +25,10 @@ public class Postfix {
 		String operators = "+-*/";	
 		
 		for (String s: array) {
-			if (!operators.contains(s)) { //push to stack if it is a number
+			// If it is an operand push it to the stack
+			if (!operators.contains(s)) { 
 				stack.push(s);
+			// If it is an operator pop it from the stack
 			} else {
 				int rhs = Integer.valueOf(stack.pop());
 				int lhs = Integer.valueOf(stack.pop());
@@ -39,12 +48,6 @@ public class Postfix {
 				}
 			}	
 		}
-		
 		return Integer.valueOf(stack.pop());
 	}
-	
-	
-	//https://www.mathblog.dk/tools/infix-postfix-converter/
-	//https://www.mathblog.dk/reverse-polish-notation/
-	//https://stackoverflow.com/questions/27083467/how-to-implement-an-interface-for-stack
 }
