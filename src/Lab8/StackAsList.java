@@ -1,17 +1,11 @@
 package Lab8;
 
-import java.util.Arrays;
-
-/**
- * Everytime a new element is pushed to the stack, it is not saved into the stack but in
- * a separate variable to access it easily when popping or peeking.
- */
-
 public class StackAsList<T> implements Stack<T> {
 	private T topElem; //new element on the top of the stack
 	private T secondElem; //element behind top element
 	private T newSecond; //will replace second element after popping
 	private StackAsList<T> oldStack; //stack underneath top and second element
+	
 	
 	public StackAsList() {
 		//empty constructor
@@ -20,6 +14,16 @@ public class StackAsList<T> implements Stack<T> {
 	public StackAsList(StackAsList<T> oldStack, T topElem) {
 		this.oldStack = oldStack;
 		this.topElem = topElem;
+	}
+	
+	public static void main (String[] args) {
+		StackAsList<String> s = new StackAsList();
+		s.push("3");
+		s.push("4");
+		System.out.println(s.oldStack);
+		System.out.println(s.toString());
+		System.out.println(s.oldStack);
+		System.out.println(s.toString());
 	}
 
 	//@Override
@@ -56,9 +60,9 @@ public class StackAsList<T> implements Stack<T> {
 	 */
 	public T pop() {
 		T top;
-		if(isEmpty() == true) {
+		if(isEmpty() == true) { //stack empty
 			top = null;
-		} else if (oldStack == null) {
+		} else if (oldStack == null) { //only topElem
 			top = this.topElem;
 			this.topElem = null;
 		} else {
@@ -87,17 +91,19 @@ public class StackAsList<T> implements Stack<T> {
 		return empty;
 	}
 
-	
+	/*
 	@Override
 	public String toString() {
-		StackAsList<T> aStack = this.oldStack;
+
+		
+		StackAsList<T> aStack = oldStack;
 		String s = "";
 		//only one element in the stack
 		//if(aStack == null && topElem != null) return "[" + topElem + "]";
 		//no element in the stack
 	    if(aStack == null) return "[]";
 		else {
-			while (aStack.isEmpty() == false) {
+			while (aStack.isEmpty() == false) { //there is at least a topElem
 				//remove the elements from the stack and add them to string s
 				T element = aStack.pop();
 				s += element.toString() + ", ";
@@ -107,7 +113,40 @@ public class StackAsList<T> implements Stack<T> {
 			//return "[" + topElem + ", " + s + "]";
 		}
 	}
-
+*/
+	
+	@Override
+	public String toString() {
+		StackAsList<T> refill = new StackAsList();
+		String s = "";
+		//no element in the stack
+	    if(topElem == null) return "[]";
+		else {
+			while (oldStack.isEmpty() == false) { //there is at least a topElem
+				//remove the elements from the stack and add them to string s
+				T element = oldStack.pop();
+				s += element.toString() + ", ";
+				//as we popped off every element in oldStack, we add them to refill
+				refill.push(element);
+				
+			}
+			
+			String str = topElem + ", " + s;
+			//refill the popped off elements into oldStack
+			refillOldStack(refill);
+			//return the string separated with comma in brackets 
+			//remove last space and comma
+			return "[" + str.substring(0, str.length() -2) + "]";
+		}
+	}
+	
+	private void refillOldStack(StackAsList<T> refill) {
+		while (refill.isEmpty() == false) { 
+			T element = refill.pop();
+			oldStack.push(element);
+			
+		}
+	}
 	
 	
 }
