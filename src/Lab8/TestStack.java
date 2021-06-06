@@ -1,7 +1,9 @@
 package Lab8;
 
 /*
- * @author Milana Tran and Ruth Wenzel
+ * The testing class for the Stack class.
+ * 
+ * @author Milana Tran
  * @version 2021-06-04
  */
 
