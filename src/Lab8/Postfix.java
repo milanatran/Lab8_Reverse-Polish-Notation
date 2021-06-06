@@ -27,7 +27,10 @@ public class Postfix {
 	
 	public int evaluate (String pfx){
 		String[] array = pfx.split("");
-			
+
+		// Possible operators
+		String operators = "+-*/";	
+
 		for (String s: array) {
 			// If it is an operand push it to the stack
 			if (!operators.contains(s)) { 
