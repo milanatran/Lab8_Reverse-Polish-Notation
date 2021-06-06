@@ -21,7 +21,7 @@ public class StackAsList<T> implements Stack<T> {
 	
 	public static void main (String[] args) throws StackException {
 		StackAsList<String> s = new StackAsList();
-		s.pop();
+		//
 	}
 
 	@Override
@@ -40,10 +40,11 @@ public class StackAsList<T> implements Stack<T> {
 	 * Removes the top element from the stack
 	 * @return The element on the top of the stack 
 	 */
-	public T pop() throws StackException{
+	public T pop(){
 		T top;
-		if(isEmpty() == true) { //stack empty
-			throw new StackException("Stack underflow");
+		//if(isEmpty() == true) { //stack empty
+		if(topElem == null) {
+			top = null;
 		} else if (oldStack == null) { //only topElem
 			top = topElem;
 			topElem = null;
@@ -87,13 +88,10 @@ public class StackAsList<T> implements Stack<T> {
 		else {
 			while (oldStack.isEmpty() == false) { //there is at least a topElem
 				//remove the elements from the stack and add them to string s
-				T element = null;
-				try {
-					element = oldStack.pop();
-				} catch (StackException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				T element;
+				
+				element = oldStack.pop();
+				
 				s += element.toString() + ", ";
 				//as we popped off every element in oldStack, we add them to refill
 				refill.push(element);
@@ -101,20 +99,17 @@ public class StackAsList<T> implements Stack<T> {
 			}
 			
 			String str = topElem + ", " + s;
+			
 			//refill the popped off elements into oldStack
-			try {
-				refillOldStack(refill);
-			} catch (StackException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			refillOldStack(refill);
+			
 			//return the string separated with comma in brackets 
 			//remove last space and comma
 			return "[" + str.substring(0, str.length() -2) + "]";
 		}
 	}
 	
-	private void refillOldStack(StackAsList<T> refill) throws StackException {
+	private void refillOldStack(StackAsList<T> refill){
 		while (refill.isEmpty() == false) { 
 			T element = refill.pop();
 			oldStack.push(element);

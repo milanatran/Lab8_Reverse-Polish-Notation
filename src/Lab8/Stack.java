@@ -9,7 +9,7 @@ public interface Stack<T> {
 	
 	abstract void push(T element); 
 	
-	abstract T pop() throws StackException; 
+	abstract T pop(); 
 	
 	abstract T peek();
 	

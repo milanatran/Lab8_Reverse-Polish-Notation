@@ -1,8 +1,6 @@
 package Lab8;
 
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 /*
  * Class Postfix that takes postfix as a String and returns the evaluation.
@@ -16,7 +14,7 @@ public class Postfix {
 	private StackAsList<String> stack = new StackAsList<>();
 	private String operators = "+-*/()"; 
 	
-	public static void main(String[] args) throws StackException{
+	public static void main(String[] args){
 	Postfix p = new Postfix();
 	//String s = "213*+";
 	//System.out.println(p.evaluate(s));
@@ -27,7 +25,7 @@ public class Postfix {
 	
 	}
 	
-	public int evaluate (String pfx) throws StackException{
+	public int evaluate (String pfx){
 		String[] array = pfx.split("");
 			
 		for (String s: array) {
@@ -57,7 +55,7 @@ public class Postfix {
 		return Integer.valueOf(stack.pop());
 	}
 	
-	public String infixToPostfix(String ifx) throws StackException{
+	public String infixToPostfix(String ifx){
 		StackAsList<String> ops = new StackAsList<>(); //stack for operators
 		String r = "";
 		String[] array = ifx.split("");
@@ -88,7 +86,7 @@ public class Postfix {
 		return r;
 	}
 	
-	public int evaluateInfix() throws StackException {
+	public int evaluateInfix(){
 		StackAsList<Integer> nums = new StackAsList<>();
 		StackAsList<String> ops = new StackAsList<>();
 		Scanner in = new Scanner(System.in);
