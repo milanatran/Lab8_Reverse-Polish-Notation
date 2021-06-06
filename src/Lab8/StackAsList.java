@@ -87,7 +87,7 @@ public class StackAsList<T> implements Stack<T> {
 	public boolean isEmpty() {
 		boolean empty = true;
 		//when there is no top element, the stack is empty
-		if(topElem != null && oldStack != null) empty = false;
+		if(topElem != null ) empty = false;
 		return empty;
 	}
 
