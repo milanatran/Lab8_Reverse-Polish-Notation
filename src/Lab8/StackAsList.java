@@ -1,8 +1,8 @@
 package Lab8;
 
-/*
+/**
  * @author Milana Tran
- * @version
+ * @version 2021-06-06
  */
 
 public class StackAsList<T> implements Stack<T> {
