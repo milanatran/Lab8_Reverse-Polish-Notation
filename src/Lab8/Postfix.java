@@ -6,8 +6,8 @@ import java.util.Scanner;
  * Class Postfix that takes postfix as a String and returns the evaluation.
  * https://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/
  * 
- * @author Ruth Wenzel
- * @version 2021-06-06
+ * @author Ruth Wenzel & Milana Tran
+ * @version 2021-06-04
  */
 
 public class Postfix {
@@ -19,6 +19,7 @@ public class Postfix {
 	String s = "12*3+";
 	System.out.println("The solution is " + p.evaluate(s));
 	//String s = p.infixToPostfix("(3-2*(4/2))+8");
+	//String s = p.infixToPostfix("(3-2*(4/2))+");
 	//System.out.println(s);
 	//System.out.println(p.evaluate(s));
 	System.out.println(p.evaluateInfix());
@@ -40,7 +41,7 @@ public class Postfix {
 			// If it is an operand push it to the stack
 			if (!operators.contains(s)) { 
 				stack.push(s);
-			// If it is an operator pop it from the stack
+			// If it is an operator pop two operandsS from the stack
 			} else {
 				int rhs = Integer.valueOf(stack.pop());
 				int lhs = Integer.valueOf(stack.pop());
@@ -69,10 +70,13 @@ public class Postfix {
 	 * @param ifx
 	 * @return The to postfix converted infix expression.
 	 */
-	public String infixToPostfix(String ifx){
+	public String infixToPostfix(String ifx) {
 		StackAsList<String> ops = new StackAsList<>(); //stack for operators
 		String r = "";
 		String[] array = ifx.split("");
+		
+		if(ifx.contains(" ") || "+-*/".contains(array[0]) || "+-*/".contains(array[array.length -1]))
+			throw new RuntimeException("Invalid input for String ifx");
 		
 		for(String s: array) {
 			// If it is an operand 
@@ -86,7 +90,9 @@ public class Postfix {
 				}
 				ops.pop(); //remove the open parentheses in stack
 			} else { //is an operator
-				while(ops.isEmpty() == false && (!(precedence(ops.peek()) < precedence(s)) || precedence(ops.peek()) == precedence(s))) {
+				while(ops.isEmpty() == false && 
+						(precedence(ops.peek()) > precedence(s) || 
+								precedence(ops.peek()) == precedence(s))) {
 					r = r + ops.pop();
 				}
 				ops.push(s);
@@ -122,7 +128,7 @@ public class Postfix {
 				}
 				ops.pop(); //remove open parentheses
 			} else { //is an operator
-				while(ops.isEmpty() == false && (precedence(ops.peek()) > precedence(s) || precedence(ops.peek()) == precedence(s))) {
+				while(ops.isEmpty() == false && (precedence(ops.peek()) >= precedence(s))) {
 					int rhs = nums.pop();
 					int lhs = nums.pop();
 					String op = ops.pop();

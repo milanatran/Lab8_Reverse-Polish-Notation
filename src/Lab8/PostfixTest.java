@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 class PostfixTest {
 	private Postfix p;
-
 	@Test
 	void testEvaluate(){
 		Postfix p = new Postfix();

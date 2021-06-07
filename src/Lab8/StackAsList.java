@@ -19,9 +19,12 @@ public class StackAsList<T> implements Stack<T> {
 		this.topElem = topElem;
 	}
 	
-	public static void main (String[] args) throws StackException {
+	public static void main (String[] args) {
 		StackAsList<String> s = new StackAsList();
-		//
+		s.push("hi");
+		s.push("hi");
+		s.push("hi");
+		s.pop();
 	}
 
 	@Override
@@ -42,10 +45,12 @@ public class StackAsList<T> implements Stack<T> {
 	 */
 	public T pop(){
 		T top;
-		//if(isEmpty() == true) { //stack empty
-		if(topElem == null) {
+		if(isEmpty() == true) { //stack empty
+		//if(topElem == null) {
 			top = null;
-		} else if (oldStack == null) { //only topElem
+			//throw new RuntimeException("Stack Underflow");
+		} 
+		if (oldStack == null) { //only topElem
 			top = topElem;
 			topElem = null;
 		} else {
