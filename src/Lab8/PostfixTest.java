@@ -17,14 +17,15 @@ class PostfixTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		StackAsList<String> stack = new StackAsList<>();
-		Postfix p = new Postfix();
+		//StackAsList<String> stack = new StackAsList<>();
+		//Postfix p = new Postfix();
 	}
 
 	@Test
 	void testEvaluate() {
-		p.evaluate("21+3*");
-		
+		Postfix p = new Postfix();
+		//p.evaluate("21+3*");
+		assertEquals(5, p.evaluate("213*+"));
 	}
 
 }
