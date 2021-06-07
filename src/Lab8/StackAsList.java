@@ -2,7 +2,7 @@ package Lab8;
 
 /*
  * @author Milana Tran
- * @version
+ * @version 2021-06-03
  */
 
 public class StackAsList<T> implements Stack<T> {
@@ -17,14 +17,6 @@ public class StackAsList<T> implements Stack<T> {
 	public StackAsList(StackAsList<T> oldStack, T topElem) {
 		this.oldStack = oldStack;
 		this.topElem = topElem;
-	}
-	
-	public static void main (String[] args) {
-		StackAsList<String> s = new StackAsList();
-		s.push("hi");
-		s.push("hi");
-		s.push("hi");
-		s.pop();
 	}
 
 	@Override

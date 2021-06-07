@@ -18,7 +18,7 @@ public class Postfix {
 	Postfix p = new Postfix();
 	//String s = "213*+";
 	//System.out.println(p.evaluate(s));
-	//String s = p.infixToPostfix("(3-2*(4/2))+8");
+	String s = p.infixToPostfix("(3-2*(4/2))+8");
 	//String s = p.infixToPostfix("(3-2*(4/2))+");
 	//System.out.println(s);
 	//System.out.println(p.evaluate(s));
@@ -40,20 +40,8 @@ public class Postfix {
 			} else {
 				int rhs = Integer.valueOf(stack.pop());
 				int lhs = Integer.valueOf(stack.pop());
-				switch (s) {
-					case "+":
-						stack.push(String.valueOf(lhs + rhs));
-						break;
-					case "-":
-						stack.push(String.valueOf(lhs - rhs));
-						break;
-					case "*":
-						stack.push(String.valueOf(lhs * rhs));
-						break;
-					case "/":
-						stack.push(String.valueOf(lhs / rhs));
-						break;
-				}
+				Integer result = calculateResult(lhs, s, rhs);
+				stack.push(result.toString());
 			}	
 		}
 		return Integer.valueOf(stack.pop());
