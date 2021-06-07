@@ -2,7 +2,7 @@ package Lab8;
 
 import java.util.Scanner;
 
-/*
+/**
  * Class Postfix that takes postfix as a String and returns the evaluation.
  * https://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/
  * 
@@ -19,6 +19,9 @@ public class Postfix {
 	//String s = "213*+";
 	//System.out.println(p.evaluate(s));
 	String s = p.infixToPostfix("(3-2*(4/2))+8");
+	//String s = "12*3+";
+	System.out.println("The solution is " + p.evaluate(s));
+	//String s = p.infixToPostfix("(3-2*(4/2))+8");
 	//String s = p.infixToPostfix("(3-2*(4/2))+");
 	//System.out.println(s);
 	//System.out.println(p.evaluate(s));
@@ -26,6 +29,11 @@ public class Postfix {
 	
 	}
 	
+	/**
+	 * Evaluates a given postfix expression String.
+	 * @param pfx
+	 * @returns the result of the expression.
+	 */
 	public int evaluate (String pfx){
 		String[] array = pfx.split("");
 
@@ -47,6 +55,12 @@ public class Postfix {
 		return Integer.valueOf(stack.pop());
 	}
 	
+	/**
+	 * A method that takes an infix expression and converts
+	 * it into a postfix expression.
+	 * @param ifx
+	 * @return The to postfix converted infix expression.
+	 */
 	public String infixToPostfix(String ifx) {
 		StackAsList<String> ops = new StackAsList<>(); //stack for operators
 		String r = "";

@@ -1,5 +1,10 @@
 package Lab8;
 
+/**
+ * @author Milana Tran
+ * @version 2021-06-06
+ */
+
 public class StackException extends Exception{
 	
 	

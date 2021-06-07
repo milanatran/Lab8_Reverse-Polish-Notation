@@ -1,6 +1,8 @@
 package Lab8;
 
-/*
+/**
+ * The implementation of the Stack interface
+ * 
  * @author Milana Tran
  * @version 2021-06-03
  */
